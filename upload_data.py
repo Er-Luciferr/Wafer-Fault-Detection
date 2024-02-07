@@ -13,8 +13,8 @@ DATABASE_NAME = 'ML_project'
 COLLECTION_NAME = 'WaferFaultDetection'
 
 #read the data as a dataframe
-df = pd.read_csv(r)
-df=df.drop('Unnamed:0',axis=1)
+df = pd.read_csv(r"R:\HuB\ESPERANTO\Data_Science\MachineLearningEndToEndProject\Classification\Wafer Fault Detection\notebook\data\wafer_23012020_041211.csv")
+df=df.drop('Unnamed: 0',axis=1)
 
 #convert data into json
 json_record=list(json.loads(df.T.to_json()).values())
