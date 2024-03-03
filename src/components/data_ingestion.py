@@ -32,6 +32,6 @@ class DataIngestion:
 
             df.replace({'na': np.nan} , inplace = True)
             return df 
-            
+
         except Exception as e:
             raise CustomException(e,sys)
