@@ -17,7 +17,7 @@ class MainUtils:
 
     def read_yaml_file(self , filename: str) -> dict:
         try:
-            with open(filename , 'rb') as yaml_file::
+            with open(filename , 'rb') as yaml_file:
                 return yaml.safe_load(yaml_file)
         except Exception as e:
             raise CustomException(e , sys) from e
