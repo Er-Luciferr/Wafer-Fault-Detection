@@ -4,7 +4,7 @@ from src.logger import logging as lg
 import sys,os 
 
 from src.pipeline.train_pipeline import TrainingPipeline
-from src.pipeline.predict_pipepline import PredictionPipeline
+from src.pipeline.predict_pipeline import PredictionPipeline
 
 app = Flask(__name__)
 
@@ -24,7 +24,7 @@ def train_route():
     except Exception as e:
         raise CustomException(e,sys)
 
-@app.route("/predict", method=['POST', 'GET'])
+@app.route("/predict", methods=['POST', 'GET'])
 def upload():
 
     try:
@@ -36,7 +36,7 @@ def upload():
                             download_name= prediction_file_detail.prediction_file_name,
                             as_attachment= True)
 
-    else:
+        else:
             return render_template('upload_file.html')
 
 

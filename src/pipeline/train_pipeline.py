@@ -17,7 +17,7 @@ class TrainingPipeline:
         except Exception as e:
             raise CustomException(e,sys)
 
-    def start_data_transformation(self):
+    def start_data_transformation(self, feature_store_file_pathc):
         try:
             data_transfomation = DataTransformation(feature_store_file_path=feature_store_file_path)
             train_arr , test_arr, preprocessor_path = data_transfomation.initiate_data_transformation()
