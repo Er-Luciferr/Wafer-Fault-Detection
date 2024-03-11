@@ -13,6 +13,7 @@ from dataclasses import dataclass
 class DataIngestionConfig:
     artifact_folder: str = os.path.join(artifact_folder)
 
+
 class DataIngestion:
     def __init__(self):
 

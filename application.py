@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Welcome to my application"
+    return "Welcome to my application  <h1><marquee>Wafer Fault Detection End to End Project</marquee></h1>"
 
 
 @app.route("/train")

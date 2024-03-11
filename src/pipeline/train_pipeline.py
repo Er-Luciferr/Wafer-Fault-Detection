@@ -1,7 +1,7 @@
 import sys , os
 
 from src.components.data_ingestion import DataIngestion
-from src.components.data_transfomation import DataTransformation
+from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
 from src.exception import CustomException
 from src.logger import logging
@@ -17,19 +17,19 @@ class TrainingPipeline:
         except Exception as e:
             raise CustomException(e,sys)
 
-    def start_data_transformation(self, feature_store_file_pathc):
+    def start_data_transformation(self, feature_store_file_path):
         try:
-            data_transfomation = DataTransformation(feature_store_file_path=feature_store_file_path)
-            train_arr , test_arr, preprocessor_path = data_transfomation.initiate_data_transformation()
+            data_transformation = DataTransformation(feature_store_file_path=feature_store_file_path)
+            train_arr , test_arr, preprocessor_path = data_transformation.initiate_data_transformation()
             return train_arr,test_arr,preprocessor_path
 
         except Exception as e:
             raise CustomException(e,sys)
 
-    def start_model_training(self):
+    def start_model_training(self, train_arr, test_arr):
         try:
             model_trainer = ModelTrainer()
-            model_score = model_trainer.initiate_model_trainer(train_array , test_array)
+            model_score = model_trainer.initiate_model_trainer(train_arr , test_arr)
             return model_score
 
         except Exception as e:
