@@ -25,17 +25,12 @@ class ModelTrainerConfig:
     model_config_file_path = os.path.join('config' , 'model.yaml')
 
 class ModelTrainer:
-    def __inti__(self):
+    def __init__(self):
 
         self.model_trainer_config = ModelTrainerConfig()
         self.utils = MainUtils()
 
-        self.models = {
-            'XGBClassifier':XGBClassifier(),
-            'GradientBoostingClassifier': GradientBoostingClassifier(),
-            'SVC':SVC(),
-            'RandomForestClassifier':RandomForestClassifier()
-        }
+        self.models = {'XGBClassifier':XGBClassifier(),'GradientBoostingClassifier': GradientBoostingClassifier(),'SVC':SVC(),'RandomForestClassifier':RandomForestClassifier()}
 
 
     def evaluate_models(self, X , y , models):
