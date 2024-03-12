@@ -29,7 +29,9 @@ def upload():
 
     try:
         if request.method == "POST":
+            lg.info('E1')
             prediction_pipeline = PredictionPipeline(request)
+            lg.info('E2')
             prediction_file_detail = prediction_pipeline.run_pipeline()
             lg.info("prediction completed. Downloading prediction file.")
             return send_file(prediction_file_detail.prediction_file_path,

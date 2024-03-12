@@ -3,6 +3,7 @@ import os,sys
 import pandas as pd 
 import pickle 
 from flask import request
+import numpy as np 
 
 from src.constant import *
 from src.exception import CustomException
@@ -49,10 +50,12 @@ class PredictionPipeline:
         except Exception as e:
             raise CustomException(e,sys )
 
-    def predict(self ,features):
+    def predict(self,features):
         try:
             model = self.utils.load_object(self.prediction_pipeline_config.model_file_path)
             preprocessor = self.utils.load_object(file_path=self.prediction_pipeline_config.preprocessor_path)
+            logging.info(features.dtypes)
+            features= np.asarray(features)
             transformed_X = preprocessor.transform(features)
             preds = model.predict(transformed_X)
             return preds
@@ -101,4 +104,3 @@ class PredictionPipeline:
 
         except Exception as e:
             raise CustomException(e,sys)
-
