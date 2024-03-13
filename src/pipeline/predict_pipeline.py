@@ -54,9 +54,9 @@ class PredictionPipeline:
         try:
             model = self.utils.load_object(self.prediction_pipeline_config.model_file_path)
             preprocessor = self.utils.load_object(file_path=self.prediction_pipeline_config.preprocessor_path)
-            logging.info(features.dtypes)
-            features= np.asarray(features)
-            transformed_X = preprocessor.transform(features)
+            feature= np.array(features)
+#            logging.info(feature.dtypes)
+            transformed_X = preprocessor.transform(feature)
             preds = model.predict(transformed_X)
             return preds
 
